@@ -1,0 +1,21 @@
+﻿//USEUNIT Common_Function
+//USEUNIT FDTCONFIGURATION_PAGE_TC
+//USEUNIT OPCUA_FDTCONFIGURATION_PAGE
+
+function GetProcess()
+{
+    objParent = null; 
+    var objParent = GetRecognitionObject(Sys, "TestedApp", "Obj_TestedApp");
+    return objParent;
+}
+
+function GetProcessWindow()
+{
+    objChild = null; objParent = null; 
+    var objParent = GetProcess();
+    if(objParent != null)
+    {
+        var objChild = GetRecognitionObject(objParent, "Unity", "Obj_UnityWindow");
+    }
+    return objChild;
+}

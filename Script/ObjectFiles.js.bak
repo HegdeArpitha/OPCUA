@@ -1,0 +1,205 @@
+﻿//USEUNIT Common_Function
+//USEUNIT FDTCONFIGURATION_PAGE_TC
+//USEUNIT OPCUA_FDTCONFIGURATION_PAGE
+//USEUNIT ReadJSON
+
+function GetProcess()
+{
+    objParent = null; 
+    var objParent = GetRecognitionObject(Sys,"TestedApp", "Obj_TestedApp");
+    //objParent=Sys.Process("ControlExpert")
+    return objParent;
+}
+
+function GetProcessWindow()
+{
+    objChild = null; objParent = null; 
+    var objParent = GetProcess();
+    if(objParent != null)
+    {
+        var objChild = GetRecognitionObject(objParent, "Unity", "Obj_UnityWindow");
+    }
+    return objChild;
+}
+
+function SelectOpenMenu()
+{
+    var process = GetProcessWindow();
+    process["Keys"]("[Hold]~fo[Release]");
+}
+
+function GetOpenWindowObject()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "Unity", "Obj_Open_Window");
+    }
+    return objChild;
+}
+
+function GetOpenWindowOpenButtonObject()
+{
+    objChild = null; objParent = null; 
+    objParent = GetOpenWindowObject();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OpenWindow", "Obj_Open_OpenButton");
+    }
+    return objChild;
+}
+
+function GetSaveConfirmWndObject()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "SaveAsWindow", "Obj_ProcessPopup_ConfirmWnd");
+    }
+    return objChild;
+}
+
+function GetProcessWndYesButtonObject()
+{
+    objChild = null; objParent = null; 
+    objParent = GetSaveConfirmWndObject();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "SaveAsWindow", "Obj_ProcessPopup_YesButton");
+    }
+    return objChild;
+}
+
+function ExplicitDelay(intTimeout, strMessage)
+{
+    aqUtils["Delay"](intTimeout, strMessage);
+}
+
+function GetDTMBrowserTree()
+{ 
+    window= null;tree= null;
+    var window = GetProcess();
+    if(window != null)
+    {
+       tree = GetRecognitionObject(window,"Unity","Obj_Unity_Tree");
+    }
+    return tree;
+}
+
+function GetDTMBrowserContextMenu()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "DTMBrowser", "Obj_DTMBrowser_ContextMenu");
+    }
+    return objChild;
+}
+
+function GetAddDeviceWndObject()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "AddDevice", "Obj_AddDeviceWnd");
+    }
+    return objChild;
+}
+
+function GetAddDeviceWndAddButtonObject()
+{
+    objChild = null; objParent = null; 
+    objParent = GetAddDeviceWndObject();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "AddDevice", "Obj_AddDeviceWnd_Add_Button");
+    }
+    return objChild;
+}
+
+function MaximizeDTMConfigurationWindow(dtmName)
+{
+    var objDTMConfigWnd1 = GetOPCUAWindowObject1();
+    if(objDTMConfigWnd1 != null)
+  	{
+  		objDTMConfigWnd1["Activate"]();
+  		WindowRelatedFunctions["MaximizeWindow"](objDTMConfigWnd1);
+  		objDTMConfigWnd1 = GetOPCUAWindowObject1();
+  		if(aqConvert["VarToInt"](objDTMConfigWnd1.Left) < 0 &&  aqConvert["VarToInt"](objDTMConfigWnd1.Top) < 0)
+	    return true;
+  	}
+    var objDTMConfigWnd2 = GetOPCUAWindowObject2();
+    if(objDTMConfigWnd2 != null)
+  	{
+  		objDTMConfigWnd2["Activate"]();
+  		WindowRelatedFunctions["MaximizeWindow"](objDTMConfigWnd2);
+  		objDTMConfigWnd2 = GetOPCUAWindowObject2();
+  		if(aqConvert["VarToInt"](objDTMConfigWnd2.Left) < 0 &&  aqConvert["VarToInt"](objDTMConfigWnd2.Top) < 0)
+	    return true;
+  	}
+}
+
+function GetOPCUAWindowObject1()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcessWindow();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent,"Configuration","OPCUA_DTMWindow1");
+    }
+    return objChild;
+}
+
+function GetOPCUAWindowObject2()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcessWindow();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent,"Configuration","OPCUA_DTMWindow2");
+    }
+    return objChild;
+}
+
+function GetSecurityWindowObj()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+      if(objParent != null)
+    {
+      var  objParent = GetRecognitionObject(objParent,"OpenWindow","Obj_Security_Database_Migration_Tool_Wnd");
+      }
+    return objParent;
+   
+}
+
+function GetExplorerProcess()
+{
+    var objParent = GetRecognitionObject(Sys, "TestedApp", "Obj_TestedApp_Explorer");
+    return objParent;
+}
+
+function GetControlPanelProcessWindow()
+{
+    var objParent = GetExplorerProcess();
+    if(objParent != null)
+    {
+        var objChild = GetRecognitionObject(objParent, "Installation", "Obj_ControlPanelWindow");
+    }
+    return objChild;
+}
+
+function GetCHMProcessWindow()
+{
+    var objParent = GetProcess();
+    if(objParent != null)
+    {
+        var objChild = GetRecognitionObject(objParent, "PRMGateway", "Obj_UnityWindow2");
+    }
+    return objChild;
+}
+

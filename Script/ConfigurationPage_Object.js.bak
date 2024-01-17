@@ -1,0 +1,13 @@
+﻿//USEUNIT FDTCONFIGURATION_PAGE_TC
+//USEUNIT OPCUA_FDTCONFIGURATION_PAGE
+
+function Get_OPCUA_ConfigObj()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_AuthenticationSettings_Wnd");
+    }
+    return objChild;
+}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
+	<children>
+		<folder name="OPCUA_Testcase">
+			<child name="FDTCONFIGURATION_PAGE_TC" key="{0A2CE656-D708-40F8-977E-A17DFBDA8CE6}" path="FDTCONFIGURATION_PAGE_TC.js" />
+		</folder>
+		<folder name="APPLICATIONFEATURES">
+			<child name="OPCUA_FDTCONFIGURATION_PAGE" key="{2B7ACEB4-E714-4424-AB22-5CACEAF9E0F9}" path="OPCUA_FDTCONFIGURATION_PAGE.js" />
+		</folder>
+		<folder name="COMMONFUNCTIONSLIBRARY">
+			<child name="Common_Function" key="{F421D7D0-C31D-478E-B7B6-C57062EFA4F2}" path="Common_Function.js" />
+		</folder>
+		<folder name="OBJECTREPO">
+			<child name="OpenProject" key="{05E881E9-2F38-4208-90B3-4152E834E248}" path="OpenProject.js" />
+			<child name="Groupbox" key="{27CBCADB-9BAB-407F-9478-6FFEDA6BE705}" path="Groupbox.js" />
+			<child name="ConfigurationPage" key="{15D16C9D-E3FB-4182-87D5-41BAD27620EB}" path="ConfigurationPage.js" />
+			<child name="ObjectFiles" key="{4D4AC193-8E1F-4D00-B799-9AC545D64A91}" path="ObjectFiles.js" />
+			<child name="UnityProject" key="{73AB39DD-7D5A-4E51-9E2D-E50FC720644A}" path="UnityProject.js" />
+			<child name="Configuration" key="{C43B55DD-6947-44D0-B21D-48786FAD5062}" path="Configuration.js" />
+			<child name="DTMBrowser" key="{5FF8F7AB-523D-401E-BEC2-B2548F2ADCC6}" path="DTMBrowser.js" />
+		</folder>
+		<folder name="GENERICLIBRARY">
+			<child name="DataBase_Related" key="{80F4D2FF-83B7-4355-95EA-551A0940FC8A}" path="DataBase_Related.js" />
+		</folder>
+	</children>
+</Root>

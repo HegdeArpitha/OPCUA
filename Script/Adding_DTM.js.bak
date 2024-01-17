@@ -1,0 +1,160 @@
+﻿//USEUNIT CommonFunction
+//USEUNIT Offline_CF_Testcase
+//USEUNIT ObjectFiles
+function T()
+{
+ //Verify_Groupbox_UI("OPCUAOFFLINEPROJECT","|Host PC","Add...")
+  //Verify_ComboBoxes_SecuritySettings("OPCUAOFFLINEPROJECT","|Host PC","Add...")
+  //Verify_TextBoxes_ModulePosition("OPCUAOFFLINEPROJECT","|Host PC","Add...")
+  //Verify_ClusterNumber_ChannelIndex("OPCUAOFFLINEPROJECT","|Host PC","Add...")
+  //Verify_AuthenticationSettings("OPCUAOFFLINEPROJECT","|Host PC","Add...")
+ // Verify_Labels_Colon("OPCUAOFFLINEPROJECT","|Host PC","Add...")
+  //Verify_GroupboxTitle_Font("OPCUAOFFLINEPROJECT","|Host PC","Add...")
+  //Verify_SecurityMode("OPCUAOFFLINEPROJECT","|Host PC","Add...")
+  //Verify_Securitysettings_Authenticationsetting_Rightside("OPCUAOFFLINEPROJECT","|Host PC","Add...")
+  Verify_EndpointURL_ServerInformation("OPCUAOFFLINEPROJECT","|Host PC","Add...","opc.tcp://192.168.1.453:4840","")
+}
+
+//Testcase to verify groupbox in UI
+function Verify_Groupbox_UI(strSTUProjName,HostPC,Option1)
+{
+      //function to open CE and project
+      OPCUA_OpenCE_OpenProject(strSTUProjName);
+      //function to DTM in DTM browser
+      AddDTM_DTMBrowser(HostPC,Option1);
+      //function to verify 4 group box in UI
+      Verify_GroupBox();
+      //function to close the project
+      Close_Project()
+}
+
+//Testcase to verify comboboxes in Security settings
+function Verify_ComboBoxes_SecuritySettings(strSTUProjName,HostPC,Option1)
+{
+      //function to open CE and project
+      OPCUA_OpenCE_OpenProject(strSTUProjName);
+      //function to DTM in DTM browser
+      AddDTM_DTMBrowser(HostPC,Option1);
+      //function to verify combobox in Security tab
+      Verify_ComboBoxes()
+      //function to close the project
+      Close_Project()
+}
+
+//Testcase to Verify 2 Text fields are added in the Module position
+function Verify_TextBoxes_ModulePosition(strSTUProjName,HostPC,Option1)
+{
+     //function to open CE and project
+     OPCUA_OpenCE_OpenProject(strSTUProjName);
+     //function to DTM in DTM browser
+     AddDTM_DTMBrowser(HostPC,Option1);
+     //function to verify Text fields in Module position
+     Verify_TextBoxes()
+     //function to close the project
+     Close_Project()
+}
+
+//Testcase to verify clusternumber and channelindex field
+function Verify_ClusterNumber_ChannelIndex(strSTUProjName,HostPC,Option1)
+{
+     //function to open CE and project
+     OPCUA_OpenCE_OpenProject(strSTUProjName);
+     //function to DTM in DTM browser
+     AddDTM_DTMBrowser(HostPC,Option1);
+     //function to validate clusternumber and channelindex field
+     Validate_ModulePosition_Field()
+     //function to close the project
+     Close_Project()
+}
+
+//Testcase to validate text enabling while selecting radiobutton
+function Verify_AuthenticationSettings(strSTUProjName,HostPC,Option1)
+{
+    //function to open CE and project
+     OPCUA_OpenCE_OpenProject(strSTUProjName);
+     //function to DTM in DTM browser
+     AddDTM_DTMBrowser(HostPC,Option1);
+     //function to validate text enabling while selecting radiobutton
+     Validate_AuthenticationFields()
+     //function to close the project
+     Close_Project()
+}
+
+//Testcase to verify colon for all labels
+function Verify_Labels_Colon(strSTUProjName,HostPC,Option1)
+{
+     //function to open CE and project
+     OPCUA_OpenCE_OpenProject(strSTUProjName);
+     //function to DTM in DTM browser
+     AddDTM_DTMBrowser(HostPC,Option1);
+     //function to verify colon 
+     Verify_Colon()
+     //function to close the project
+      Close_Project()
+}
+
+//Testcase to verify groupbox font is bold
+function Verify_GroupboxTitle_Font(strSTUProjName,HostPC,Option1)
+{
+     //function to open CE and project
+     OPCUA_OpenCE_OpenProject(strSTUProjName);
+     //function to DTM in DTM browser
+     AddDTM_DTMBrowser(HostPC,Option1);
+     //function to verify groupbox font is bold
+     Verify_Font()
+     //function to close the project
+     Close_Project()
+}
+
+//Testcase to verify security code
+function Verify_SecurityMode(strSTUProjName,HostPC,Option1)
+{
+     //function to open CE and project
+     OPCUA_OpenCE_OpenProject(strSTUProjName);
+     //function to DTM in DTM browser
+     AddDTM_DTMBrowser(HostPC,Option1);
+     //function to verify security code
+     VerifySecurityMode()
+     //function to close the project
+     Close_Project()         
+}
+
+//to be update the testcase
+function Verify_Textcontrol_ServerInformation(strSTUProjName,HostPC,Option1)
+{
+     //function to open CE and project
+     OPCUA_OpenCE_OpenProject(strSTUProjName);
+     //function to DTM in DTM browser
+     AddDTM_DTMBrowser(HostPC,Option1);
+     
+     //function to close the project
+     Close_Project()  
+  
+}
+
+//Testcase to verify fields exists in right side
+function Verify_Securitysettings_Authenticationsetting_Rightside(strSTUProjName,HostPC,Option1)
+{
+   //function to open CE and project
+   OPCUA_OpenCE_OpenProject(strSTUProjName);
+   //function to DTM in DTM browser
+   AddDTM_DTMBrowser(HostPC,Option1);
+   //function to verify image 
+   ImageVerify()
+   //function to close the project
+   Close_Project()  
+}
+
+//Testcase to verify Endpoint URL added
+function Verify_EndpointURL_ServerInformation(strSTUProjName,HostPC,Option1,URLvalue,IPAddress)
+{
+   //function to open CE and project
+   OPCUA_OpenCE_OpenProject(strSTUProjName);
+   //function to DTM in DTM browser
+   AddDTM_DTMBrowser(HostPC,Option1);
+   //function to verify endpoint
+   VerifyEndURL(URLvalue,IPAddress)
+   //function to close the project
+   Close_Project() 
+   
+}

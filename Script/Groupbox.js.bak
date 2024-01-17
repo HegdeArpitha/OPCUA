@@ -1,0 +1,310 @@
+﻿//USEUNIT FDTCONFIGURATION_PAGE_TC
+//USEUNIT OPCUA_FDTCONFIGURATION_PAGE
+//USEUNIT ReadJSON
+function GetGroupboxObj_ServerInformations()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_ServerInformation_Wnd");
+    }
+    return objChild;
+}
+
+function GetGroupboxObj_SecuritySettings()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_SecuritySettings_Wnd");
+    }
+    return objChild;
+}
+
+function GetGroupboxObj_ModulePosition()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_ModulePosition_Wnd");
+    }
+    return objChild;
+}
+
+function GetModulePosition_ChannelIndex()
+{
+    objChild = null; objParent = null; 
+    objParent = GetGroupboxObj_ModulePosition()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtChannelIndex_Wnd");
+    }
+    return objChild;
+}
+
+function GetModulePosition_ChannelIndex_Textbox()
+{
+    objChild = null; objParent = null; 
+    objParent = GetModulePosition_ChannelIndex()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtChannelIndex_Txtbox_Wnd");
+    }
+    return objChild;
+}
+
+function GetModulePosition_ClusterNumber_Textbox()
+{
+    objChild = null; objParent = null; 
+    objParent = GetModulePosition_ClusterNumber()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtClusterNumber_Txtbox_Wnd");
+    }
+    return objChild;
+}
+function GetModulePosition_ClusterNumber()
+{
+    objChild = null; objParent = null; 
+    objParent = GetGroupboxObj_ModulePosition()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtClusterNumber_Wnd");
+    }
+    return objChild;
+}
+
+
+function GetActionArea_Obj()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_ActionArea");
+    }
+    return objChild;
+}
+
+function GetActionArea_OKBtn_Obj()
+{
+    objChild = null; objParent = null; 
+    objParent = GetActionArea_Obj()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_ActionArea_OKBtn");
+    }
+    return objChild;
+}
+
+function GetActionArea_ApplyBtn_Obj()
+{
+    objChild = null; objParent = null; 
+    objParent = GetActionArea_Obj()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_ActionArea_ApplyBtn");
+    }
+    return objChild;
+}
+
+function GetGroupboxObj_AuthenticationSettings()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_AuthenticationSettings_Wnd");
+    }
+    return objChild;
+}
+
+function GetAuthenticationSettings_UserName()
+{
+    objChild = null; objParent = null; 
+    objParent = GetGroupboxObj_AuthenticationSettings()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtUserName_Wnd");
+    }
+    return objChild;
+}
+
+function GetAuthenticationSettings_UserName_Textbox()
+{
+    objChild = null; objParent = null; 
+    objParent = GetAuthenticationSettings_UserName()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtUserName_Txtbox_Wnd");
+    }
+    return objChild;
+}
+
+function GetAuthenticationSettings_Password()
+{
+    objChild = null; objParent = null; 
+    objParent = GetGroupboxObj_AuthenticationSettings()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtPassword_Wnd");
+    }
+    return objChild;
+}
+
+function GetAuthenticationSettings_Password_Textbox()
+{
+    objChild = null; objParent = null; 
+    objParent = GetAuthenticationSettings_Password()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtPassword_Txtbox_Wnd");
+    }
+    return objChild;
+}
+
+function GetAuthenticationSettings_Authentication()
+{
+    objChild = null; objParent = null; 
+    objParent = GetGroupboxObj_AuthenticationSettings()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtAuthentication_Wnd");
+    }
+    return objChild;
+}
+
+function GetAuthenticationSettings_Authentication_Anonymous()
+{
+    objChild = null; objParent = null; 
+    objParent = GetAuthenticationSettings_Authentication()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtAuthentication_Anonymous_Wnd");
+    }
+    return objChild;
+}
+
+function GetAuthenticationSettings_Authentication_Userlogin()
+{
+    objChild = null; objParent = null; 
+    objParent = GetAuthenticationSettings_Authentication()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtAuthentication_UserLogin_Wnd");
+    }
+    return objChild;
+}
+
+function GetGroupboxObj_ServerInformation()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_ServerInformation_Wnd");
+    }
+    return objChild;
+}
+
+function GetServerInformation_EndpointURL()
+{
+    objChild = null; objParent = null; 
+    objParent = GetGroupboxObj_ServerInformation()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtEndpointUrl_Wnd");
+    }
+    return objChild;
+}
+
+function GetServerInformation_EndpointURL_Textbox()
+{
+    objChild = null; objParent = null; 
+    objParent = GetServerInformation_EndpointURL()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtEndpointUr_EndpointUrl_Wnd");
+    }
+    return objChild;
+}
+
+function GetGroupboxObj_SecuritySetting()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_SecuritySetting_Wnd");
+    }
+    return objChild;
+}
+
+function GetSecuritySetting_SecurityPolicy()
+{
+    objChild = null; objParent = null; 
+    objParent = GetGroupboxObj_SecuritySetting()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtSecurityPolicy_Wnd");
+    }
+    return objChild;
+}
+
+function GetSecuritySetting_SecurityPolicy_Combobox()
+{
+    objChild = null; objParent = null; 
+    objParent = GetSecuritySetting_SecurityPolicy()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtSecurityPolicy_Combobox_Wnd");
+    }
+    return objChild;
+}
+
+function GetSecuritySetting_SecurityMode()
+{
+    objChild = null; objParent = null; 
+    objParent = GetGroupboxObj_SecuritySetting()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtSecurityMode_Wnd");
+    }
+    return objChild;
+}
+
+function GetSecuritySetting_SecurityMode_Combobox()
+{
+    objChild = null; objParent = null; 
+    objParent = GetSecuritySetting_SecurityMode()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_fdtSecurityMode_Combobox_Wnd");
+    }
+    return objChild;
+}
+
+function GetTestdata_DTMBrowser()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "DTM_BROWSER_PAGE", "Obj_DtmBrowser_Wnd");
+    }
+    return objChild;
+}
+
+function GetTestdata_FullName()
+{
+    objChild = null; objParent = null; 
+    objParent = GetTestdata_DTMBrowser()
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE","Obj_DTMOption");
+    }
+    return objChild;
+}

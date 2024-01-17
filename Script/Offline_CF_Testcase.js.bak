@@ -1,0 +1,521 @@
+﻿//USEUNIT CommonFunction
+//USEUNIT ObjectFiles
+//USEUNIT Parent_Device_DTM
+
+function AddDTM_DTMBrowser(HostPC,Option1)
+{
+  for(var i=0;i<2;i++)
+  {
+    DTMName1=["NTSAHI0412XH","NTSAHO0212H"]
+    DTMName=["NTSAHI0412XH_DTM","NTSAHO0212H_DTM"]
+    DTMFullName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+    SelectDTMInDtmBrowser_RightClick(HostPC,Option1);
+    //function to scroll the window
+    scrollBar()
+    var addWindow = GetAddDeviceWndObject();
+    var objTemp = addWindow.FindChild(Array("Text","Visible"),Array(DTMName1[i],true),5)
+    if(objTemp["Exists"] == true)
+    {
+        
+        objTemp.Click();
+        //Code to select AddDTM button in the window              
+        var button = GetAddDeviceWndAddButtonObject();
+        button.Click();
+       //function to click on modification authorization
+        ModificationAuthorization();
+        //function to rename DTM
+	      Selecting_DTMName(DTMName[i]);
+        //Code to verify DTM in DTM browser
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMFullName[i],true),5)
+          if(dtmName["Exists"] == true)
+          {  
+              actualResult =DTMFullName[i]+ " exists in DTM Browser";
+              Log["Checkpoint"](actualResult);
+          }
+          else
+          {  
+              actualResult = DTMFullName[i]+ " does not exists in DTM Browser";
+              Log["Error"](actualResult);
+          }
+       }
+    }
+  }   
+}
+
+function Verify_GroupBox()
+{
+  for(var i=0;i<2;i++)
+  {
+       DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+       WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+          //Code to select DTM from DTM browser
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+          dtmName.DblClick();
+          //Code to maximize the window
+           var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          maximize_wnd["Maximize"]();
+          for(var j=0;j<4;j++)
+          {
+              GroupName=["Server Information","Security Settings","Authentication Settings","Module Position"]
+              
+              var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+              var device_info=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+              //Code to check group box exists or not
+              var groupbox=device_info.FindChild(Array("WndCaption","Visible"),Array(GroupName[j],true),5)
+              if(groupbox["Exists"] == true)
+              {
+                 Log["Checkpoint"](GroupName[j]+ " group exists");
+              }
+              else
+              {
+                Log["Error"](GroupName[j]+ " group does not exists")
+              }
+          }
+      } 
+   }   
+}
+
+function Verify_ComboBoxes()
+{
+  for(var i=0;i<2;i++)
+  {
+       DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+       WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+          //Code to select DTM from DTM browser
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+          dtmName.DblClick();
+           //Code to maximize the window
+           var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          maximize_wnd["Maximize"]();
+          for(var j=0;j<2;j++)
+          {
+              Combobox_Cell=['WinFormsObject("fdtSecurityPolicy")','WinFormsObject("fdtSecurityMode")']
+              SecuritySettingValues=["Security Policy","Message Security Mode"]
+              var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+              var device_info=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+              var groupbox=device_info.FindChild(Array("WndCaption","Visible"),Array("Security Settings",true),5)
+                //Code to check combo box exists or not
+              var comboboxcell=groupbox.FindChild(Array("Name","Visible"),Array(Combobox_Cell[j],true),5)
+              if(comboboxcell["Exists"] == true)
+              {
+                var combo_box=comboboxcell.FindChild(Array("Name","Visible"),Array('WinFormsObject("_comboBox")',true),5)
+                if(combo_box["Exists"] == true)
+                {
+                  Log["Checkpoint"]("Combobox is present for "+SecuritySettingValues[j])
+                }
+                else
+                {
+                  Log["Error"]("Combobox is not present for "+SecuritySettingValues[j])
+                }
+              }
+              else
+              {
+                Log["Error"]("Combobox cell is not present")
+              }
+          }
+       }
+       }
+}
+
+
+function Verify_TextBoxes()
+{
+  for(var i=0;i<2;i++)
+  {
+       DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+       WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+           //Code to select DTM from DTM browser
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+          dtmName.DblClick();
+           //Code to maximize the window
+          var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          maximize_wnd["Maximize"]();
+          for(var j=0;j<2;j++)
+          {
+              Textbox_Cell=['WinFormsObject("fdtClusterNumber")','WinFormsObject("fdtChannelIndex")']
+              ModulePositionValues=["Cluster Number","Channel Index"]
+              var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+              var device_info=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+              var groupbox=device_info.FindChild(Array("WndCaption","Visible"),Array("Module Position",true),5)
+               //Code to check text box exists or not
+              var textboxcell=groupbox.FindChild(Array("Name","Visible"),Array(Textbox_Cell[j],true),5)
+              if(textboxcell["Exists"] == true)
+              {
+                var text_box=textboxcell.FindChild(Array("Name","Visible"),Array('WinFormsObject("_textBox")',true),5)
+                if(text_box["Exists"] == true)
+                {
+                  Log["Checkpoint"]("Textbox is present for "+ModulePositionValues[j])
+                }
+                else
+                {
+                  Log["Error"]("Textbox is not present for "+ModulePositionValues[j])
+                }
+              }
+              else
+              {
+                Log["Error"]("Textbox cell is not present")
+              }
+          }
+       }
+       }
+}
+
+function Validate_ModulePosition_Field()
+{
+  for(var i=0;i<2;i++)
+  {
+       DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+       WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+          //Code to select DTM from DTM browser
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+          dtmName.DblClick();
+           //Code to maximize the window
+          var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          maximize_wnd["Maximize"]();
+          for(var j=0;j<2;j++)
+          {
+              Textbox_Cell=['WinFormsObject("fdtClusterNumber")','WinFormsObject("fdtChannelIndex")']
+              ModulePositionValues=["Cluster Number","Channel Index"]
+              Value=["16","3"]
+              Range=["24","4"]
+              var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+              var device_info=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+              var groupbox=device_info.FindChild(Array("WndCaption","Visible"),Array("Module Position",true),5)
+              var textboxcell=groupbox.FindChild(Array("Name","Visible"),Array(Textbox_Cell[j],true),5)
+              if(textboxcell["Exists"] == true)
+              {
+                  var text_box=textboxcell.FindChild(Array("Name","Visible"),Array('WinFormsObject("_textBox")',true),5)
+                  text_box["SetText"](Value[j])
+                  if(text_box["wText"]>=0 && text_box["wText"]<=Range[j])
+                  {
+                     Log.Checkpoint(ModulePositionValues[j]+ " is within the range")
+                  }
+                  else
+                  {
+                     Log.Error(ModulePositionValues[j]+ " is not within the range")
+                  }
+              }
+              else
+              {
+                Log["Error"]("Textbox cell is not present")
+              }
+          }
+       }
+  }
+}
+
+function Validate_AuthenticationFields()
+{
+  for(var i=0;i<2;i++)
+  {
+       DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+       WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+          //Code to select DTM from DTM browser
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+          dtmName["DblClick"]();
+           //Code to maximize the window
+          var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          maximize_wnd["Maximize"]();
+          for(var j=0;j<2;j++)
+          {
+              Textbox_Cell=['WinFormsObject("fdtUserName")','WinFormsObject("fdtPassword")']
+              RadioOption=["Anonymous","User Login"]
+              ModulePositionValues=["Cluster Number","Channel Index"]
+              ReadOnly=[true,false]
+              checking=["disabled","enabled"]
+              var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+              var device_info=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+              var groupbox=device_info.FindChild(Array("WndCaption","Visible"),Array("Authentication Settings",true),5)
+              var celloption=groupbox.FindChild(Array("Name","Visible"),Array('WinFormsObject("fdtAuthentication")',true),5)
+              if(celloption["Exists"] == true)
+              {
+                 var text_box=celloption.FindChild(Array("WndCaption","Visible"),Array(RadioOption[j],true),5)
+                 text_box.Click();
+                 Delay(6000,"Waiting for clicking the button")
+                 var value1=groupbox.FindChild(Array("Name","Visible"),Array(Textbox_Cell[j],true),5)
+                 var val=value1.FindChild(Array("Name","Visible"),Array('WinFormsObject("_textBox")',true),5)
+                 var a=val.FindChild(Array("ReadOnly","Visible"),Array(ReadOnly[j],true),5)
+                 Log["Checkpoint"]("Text field is " +checking[j]) 
+              }
+              else
+              {
+                Log["Error"]("Textbox cell is not present")
+              }
+          }
+       }
+        sam["Close"]()
+       }
+}
+
+function  Verify_Colon()
+{
+  for(var i=0;i<2;i++)
+  {
+       DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+       WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+          //Code to select DTM from DTM browser
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+          dtmName["DblClick"]();
+           //Code to maximize the window
+          var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          maximize_wnd["Maximize"]();
+          for(var j=0;j<7;j++)
+          {
+                Textbox_Cell=['WinFormsObject("fdtClusterNumber")','WinFormsObject("fdtChannelIndex")','WinFormsObject("fdtEndpointUrl")','WinFormsObject("fdtSecurityMode")','WinFormsObject("fdtSecurityPolicy")','WinFormsObject("fdtUserName")','WinFormsObject("fdtPassword")']
+                LabelName=["Cluster Number:","Channel Index:","Endpoint Url:","Message Security Mode:","Security Policy:","Username:","Password:"]
+                Groupbox=["Module Position","Module Position","Server Information","Security Settings","Security Settings","Authentication Settings","Authentication Settings"]
+                WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+                
+                var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+                var device_info=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+                var groupbox=device_info.FindChild(Array("WndCaption","Visible"),Array(Groupbox[j],true),5)
+                var textboxcell=groupbox.FindChild(Array("Name","Visible"),Array(Textbox_Cell[j],true),5)
+                if(textboxcell["Exists"] == true)
+                {
+                    var text_box=textboxcell.FindChild(Array("Name","Visible"),Array('WinFormsObject("_label")',true),5)
+                    var a=aqString.Contains(LabelName[j],":",0,true)
+                    if(a!=-1)
+                    {
+                      Log["Checkpoint"]("Colon is present for " +LabelName[j]+ " label");
+                    }
+                    else
+                    {
+                      Log["Error"]("Colon is not present for " +LabelName[j]+ " label");
+                    }
+                }
+           } 
+       }
+       sam["Close"]()
+  }
+}
+
+function Verify_Font()
+{
+  for(var i=0;i<2;i++)
+  {
+       DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+       WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+          //Code to select DTM from DTM browser
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+          dtmName["DblClick"]();
+           //Code to maximize the window
+          var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          maximize_wnd["Maximize"]();
+          for(var j=0;j<4;j++)
+          {
+              Groupbox=["Module Position","Server Information","Security Settings","Authentication Settings"]
+              WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+              var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+              var device_info=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+              var groupbox=device_info.FindChild(Array("WndCaption","Visible"),Array(Groupbox[j],true),5)
+              if(groupbox["Font"]["Bold"] == true)
+              {
+                  Log["Checkpoint"]("Text is bold for " +Groupbox[j]);
+              }
+              else
+              {
+                  Log["Error"]("Text is  not bold for " +Groupbox[j]);
+              }
+          } 
+    }
+    sam["Close"]()
+  }
+}
+
+
+function VerifySecurityMode()
+{
+  for(var i=0;i<2;i++)
+  {
+       DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+       WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+          
+          //Code to select DTM from DTM browser
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+          dtmName["DblClick"]();
+           //Code to maximize the window
+          var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          maximize_wnd["Maximize"]();
+          for(var j=0;j<7;j++)
+          {
+              SecurityPolicy=["None","Basic128Rsa15","Basic128Rsa15","Basic256","Basic256","Basic256Sha256","Basic256Sha256"]
+              MessageSecurityMode=["None","Sign","Sign and Encrypt","Sign","Sign and Encrypt","Sign","Sign and Encrypt"]
+              var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+              var device_info=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+              var groupbox=device_info.FindChild(Array("WndCaption","Visible"),Array("Security Settings",true),5)
+              var a=groupbox.FindChild(Array("Name","Visible"),Array('WinFormsObject("_comboBox")',true),5)
+              a["ClickItem"](SecurityPolicy[j]);
+              var b=groupbox.FindChild(Array("Name","Visible"),Array('WinFormsObject("_comboBox")',true),5)
+              var c=b.FindChild(Array("wItemList","Visible"),Array(MessageSecurityMode[j],true),5)
+              if(aqString.Contains(MessageSecurityMode[j],MessageSecurityMode[j])!=-1)
+              {
+                  Log["Checkpoint"](MessageSecurityMode[j]+" options are selected for " +SecurityPolicy[j]);
+              }
+              else
+              {
+                  Log["Error"](MessageSecurityMode[j]+" options are not selected for " +SecurityPolicy[j]);
+              }
+          } 
+    }
+    sam["Close"]()
+  }
+}
+
+function VerifyServerInformation()
+{
+  for(var i=0;i<2;i++)
+  {
+       DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+       WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+          //Code to select DTM from DTM browser
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+          dtmName["DblClick"]();
+           //Code to maximize the window
+          var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          maximize_wnd["Maximize"]();
+          var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          var device_info=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+          var groupbox=device_info.FindChild(Array("WndCaption","Visible"),Array("Server Information",true),5)
+          var text_box=groupbox.FindChild(Array("Name","Visible"),Array('WinFormsObject("_textBox")',true),5)
+          if(text_box["Exists"] == true)
+          {
+            Log["Checkpoint"]("Text control is present in Server information");
+          }
+          else
+          {
+            Log["Error"]("Text control is not present in Server information");
+          }  
+                
+       }
+   sam["Close"]()
+  }
+}
+
+function VerifyEndURL(URLvalue,IPAddress)
+{
+  for(var i=0;i<2;i++)
+  {
+       DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+       WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+       var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+       if(objTemp["Exists"] == true)
+       {
+          //Code to select DTM from DTM browser
+          var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+          dtmName["DblClick"]();
+           //Code to maximize the window
+          var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          maximize_wnd["Maximize"]();
+          var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+          var device_info=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+          var groupbox=device_info.FindChild(Array("WndCaption","Visible"),Array("Server Information",true),5)
+          var text_box=groupbox.FindChild(Array("Name","Visible"),Array('WinFormsObject("_textBox")',true),5)
+          if(text_box["Exists"] == true)
+          {
+              Log["Checkpoint"]("Text control is present in Server information");
+              text_box["SetText"](URLvalue)
+              var apply=sam.FindChild(Array("WndCaption","Visible"),Array("Apply",true),5)
+              apply["Click"]();
+            
+              var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+              if(objTemp["Exists"] == true)
+              {
+                  var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(IPAddress,true),5)
+                  if(dtmName["Exists"] == true)
+                  {  
+                     actualResult =IPAddress+ " exists in DTM Browser";
+                     Log["Checkpoint"](actualResult);
+                  }
+                  else
+                  {  
+                      actualResult = IPAddress+ " does not exists in DTM Browser";
+                      Log["Error"](actualResult);
+                  }
+             }
+        }
+        else
+        {
+            Log["Error"]("Text control is not present in Server information");
+        }          
+    }
+    sam["Close"]()
+  }
+}
+
+function ImageVerify()
+{
+  for(var i=0;i<2;i++)
+  {
+    DTMName=["< 192.168.1.200 > NTSAHI0412XH_DTM","< 192.168.1.200 > NTSAHO0212H_DTM"]
+    WindowName=["NTSAHI0412XH_DTM - fdtConfiguration","NTSAHO0212H_DTM - fdtConfiguration"]
+    var finalResult = true;
+    var actualPic, expectedPic;
+    var objTemp = Sys.FindChild(Array("WndCaption","Visible"),Array("DTM Browser",true),5)
+    if(objTemp["Exists"] == true)
+    {
+        //Code to select DTM from DTM browser
+        var dtmName=objTemp.FindChild(Array("Text","Visible"),Array(DTMName[i],true),5)
+        dtmName["DblClick"]();
+         //Code to maximize the window
+        var maximize_wnd=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+        maximize_wnd["Maximize"]();
+    }
+    var sam=Sys.FindChild(Array("WndCaption","Visible"),Array(WindowName[i],true),5)
+    var img=sam.FindChild(Array("Name","Visible"),Array('WinFormsObject("DeviceInfoControl")',true),5)
+    if(img != null)
+    {
+      for(var i=0;i<2;i++)
+      {
+       Picture=["Security Settings","Authentication Settings"] 
+       actualPic = img["Picture"]();
+       expectedPic = Regions.GetPicture(Picture[i]);
+       result = Regions["FindRegion"](expectedPic, actualPic, 0, 0, false, false, 50);
+       if(result != null)
+      {
+          actualResult = Picture[i]+" is in right side";
+          Log["Checkpoint"](actualResult);
+      }
+      else
+      {
+          actualResult = Picture[i]+" is not in right side";
+          Log["Error"](actualResult);
+      }
+      }
+    }
+    else
+    {
+       Log["Error"]("image not found");
+    }
+    sam["Close"]()
+  }
+}

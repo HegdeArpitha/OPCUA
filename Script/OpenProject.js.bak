@@ -1,0 +1,47 @@
+﻿//USEUNIT Common_Function
+//USEUNIT FDTCONFIGURATION_PAGE_TC
+//USEUNIT OPCUA_FDTCONFIGURATION_PAGE
+//USEUNIT ReadJSON
+function GetOpenWindowObject()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "Unity", "Obj_Open_Window");
+    }
+    return objChild;
+}
+
+function GetOpenWndButtonObject()
+{
+    objChild = null; objParent = null; 
+    objParent = GetOpenWindowObject();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OpenWindow", "Obj_Open_Button");
+    }
+    return objChild;
+}
+
+function GetSaveConfirmWndObject()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "SaveAsWindow", "Obj_SaveConfirm_WndObject");
+    }
+    return objChild;
+}
+
+function GetSaveConfirmYesButtonObject()
+{
+    objChild = null; objParent = null; 
+    objParent = GetSaveConfirmWndObject();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "SaveAsWindow", "Obj_SaveConfirm_YesButton");
+    }
+    return objChild;
+}

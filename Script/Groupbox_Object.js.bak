@@ -1,0 +1,46 @@
+﻿//USEUNIT FDTCONFIGURATION_PAGE_TC
+//USEUNIT OPCUA_FDTCONFIGURATION_PAGE
+
+function GetGroupboxObj_ServerInformation()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_ServerInformation_Wnd");
+    }
+    return objChild;
+}
+
+function GetGroupboxObj_SecuritySettings()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_SecuritySettings_Wnd");
+    }
+    return objChild;
+}
+
+function GetGroupboxObj_ModulePosition()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_ModulePosition_Wnd");
+    }
+    return objChild;
+}
+
+function GetGroupboxObj_AuthenticationSettings()
+{
+    objChild = null; objParent = null; 
+    objParent = GetProcess();
+    if(objParent != null)
+    {
+        objChild = GetRecognitionObject(objParent, "OPCUA_FDTCONFIGURATION_PAGE", "Obj_AuthenticationSettings_Wnd");
+    }
+    return objChild;
+}

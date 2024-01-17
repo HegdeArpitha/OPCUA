@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root signature="{24B6FA0B-0143-461A-9758-AEB9E9A9428B}" version="15.0" key="{E72C7125-4803-4E1D-9553-86F1AE958BA7}">
+	<children>
+		<child name="OPCUA_Project" key="{DF8CDCF8-C165-4895-8F1E-C0075145C55E}" path="TestProject1\OPCUA_Project.mds" />
+	</children>
+	<testItems key="{07DD6865-6940-4D0A-AAA3-1E5C3738CF52}">
+		<children>
+			<testItem key="{DF8CDCF8-C165-4895-8F1E-C0075145C55E}" enabled="True" timeout="0" stopOnError="True" description="" />
+		</children>
+	</testItems>
+	<variables key="{A63FC884-0BF1-4082-801E-FF3F0B3BF83E}" />
+	<analysis key="{462E88B4-8C95-4A23-AD1D-58B7A36CA1AF}" />
+	<scc key="{C900492B-D218-429C-9AA0-264B7D78CA88}" name="Git Plugin">
+		<data />
+	</scc>
+</Root>

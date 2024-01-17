@@ -1,0 +1,73 @@
+Stack trace:
+7BDAAFC7  _ODI_getrusage + 0x1b7  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0xafc7
+7BDCB8E8  tix_exception::ancestor_of + 0xd8  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x2b8e8
+7581F7B6  CoCreateInstance + 0x6136  C:\WINDOWS\System32\combase.dll + 0xdf7b6
+7581F2DC  CoCreateInstance + 0x5c5c  C:\WINDOWS\System32\combase.dll + 0xdf2dc
+74FF7F3D  strtol + 0x88d  C:\WINDOWS\System32\ucrtbase.dll + 0x37f3d
+74FF7F8D  strtol + 0x8dd  C:\WINDOWS\System32\ucrtbase.dll + 0x37f8d
+74FF88AF  _stdio_common_vsprintf + 0x1f  C:\WINDOWS\System32\ucrtbase.dll + 0x388af
+7BDAF785  _ODI_sprintf + 0x25  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0xf785
+7BDB74D0  objectstore_exception::vsignal + 0xd0  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x174d0
+     SymFromAddr error 487:
+72726528  objectstore_exception::vsignal + 0x0  C:\WINDOWS\assembly\NativeImages_v4.0.30319_32\mscorlib\a07471856bb8b0b68198a4e39d3cc91b\mscorlib.ni.dll + 0xd56528
+78F80C10  _ODI_get_rd_by_type + 0x4070  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSCLIENT.2013.0.DLL + 0x70c10
+7BA019C5  GetModuleIntf + 0x6565  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x319c5
+7BA019C5  GetModuleIntf + 0x6565  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x319c5
+7BA0159A  GetModuleIntf + 0x613a  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x3159a
+7BA019A5  GetModuleIntf + 0x6545  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x319a5
+7BDE3C79  _Per_thread_data::create + 0xa9  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x43c79
+7BDE38C5  _Thread_operations::get_thread_id + 0x25  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x438c5
+78F25BB7  _Enumerator_literal::literal_kind + 0x1297  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSCLIENT.2013.0.DLL + 0x15bb7
+     SymFromAddr error 487:
+74AB9F3B  _Enumerator_literal::literal_kind + 0x0  C:\Program Files\SentinelOne\Sentinel Agent 23.1.4.650\InProcessClient32.dll + 0x59f3b
+     SymFromAddr error 487:
+74ABA33F  _Enumerator_literal::literal_kind + 0x0  C:\Program Files\SentinelOne\Sentinel Agent 23.1.4.650\InProcessClient32.dll + 0x5a33f
+     SymFromAddr error 487:
+74AB9D66  _Enumerator_literal::literal_kind + 0x0  C:\Program Files\SentinelOne\Sentinel Agent 23.1.4.650\InProcessClient32.dll + 0x59d66
+     SymFromAddr error 487:
+74AB9C8E  _Enumerator_literal::literal_kind + 0x0  C:\Program Files\SentinelOne\Sentinel Agent 23.1.4.650\InProcessClient32.dll + 0x59c8e
+7BA0159A  GetModuleIntf + 0x613a  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x3159a
+76F0ABB9  RtlRestoreLastWin32Error + 0x39  C:\WINDOWS\SYSTEM32\ntdll.dll + 0x5abb9
+7BDB7364  objectstore_exception::signal + 0x14  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x17364
+7BDA7C73  _ODI_freeze_all_threads + 0xf3  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x7c73
+76F245BC  NtSetInformationWorkerFactory + 0xc  C:\WINDOWS\SYSTEM32\ntdll.dll + 0x745bc
+7BA0159A  GetModuleIntf + 0x613a  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x3159a
+7BA019C5  GetModuleIntf + 0x6565  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x319c5
+7BA0159A  GetModuleIntf + 0x613a  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x3159a
+7BA019A5  GetModuleIntf + 0x6545  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x319a5
+7BDE3C79  _Per_thread_data::create + 0xa9  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x43c79
+7BDE3B5B  _Thread_operations::set_xa_bound_session + 0x1db  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x43b5b
+7BDE64FB  _VLWP_critical_region::make_quick_critical_region + 0x286b  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x464fb
+7BDE3501  _ODI_llpl_layer_lock::_ODI_llpl_layer_lock + 0x51  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x43501
+7BDADDEA  _ODI_move_memory + 0xaa  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0xddea
+78F507A5  os_dealloc_hook::register_hook + 0x525  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSCLIENT.2013.0.DLL + 0x407a5
+78F37F7F  _CLIENT_fast_tags_walker_allow_write::get_object_offset + 0x32f  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSCLIENT.2013.0.DLL + 0x27f7f
+78F89BF0  _ODI_destroy_fault_translator + 0x1d0  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSCLIENT.2013.0.DLL + 0x79bf0
+     SymFromAddr error 487:
+74A857C3  _ODI_destroy_fault_translator + 0x0  C:\Program Files\SentinelOne\Sentinel Agent 23.1.4.650\InProcessClient32.dll + 0x257c3
+76F1CF98  LdrSetDllManifestProber + 0xf8  C:\WINDOWS\SYSTEM32\ntdll.dll + 0x6cf98
+     SymFromAddr error 487:
+7B9DA8B1  LdrSetDllManifestProber + 0x0  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0xa8b1
+7BA02620  GetModuleIntf + 0x71c0  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x32620
+7B9FDB50  GetModuleIntf + 0x26f0  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x2db50
+     SymFromAddr error 487:
+7B9E76BE  GetModuleIntf + 0x0  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x176be
+     SymFromAddr error 487:
+7B9E7956  GetModuleIntf + 0x0  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x17956
+     SymFromAddr error 487:
+7B9E760A  GetModuleIntf + 0x0  c:\program files (x86)\testcompleteupdatedversion\bin\extensions\tcMSVCHook.dll + 0x1760a
+75FD107C  NtUserMessageCall + 0xc  C:\WINDOWS\System32\win32u.dll + 0x107c
+005400F9  CUIEEditBtn::CreateButton + 0x55399  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\ControlExpert.exe + 0xa00f9
+     SymFromAddr error 487:
+645A6C71  CUIEEditBtn::CreateButton + 0x0  C:\WINDOWS\SYSTEM32\mfc140u.dll + 0x1f6c71
+     SymFromAddr error 487:
+6463FE7D  CUIEEditBtn::CreateButton + 0x0  C:\WINDOWS\SYSTEM32\mfc140u.dll + 0x28fe7d
+     SymFromAddr error 487:
+64640D15  CUIEEditBtn::CreateButton + 0x0  C:\WINDOWS\SYSTEM32\mfc140u.dll + 0x290d15
+     SymFromAddr error 487:
+6462B93C  CUIEEditBtn::CreateButton + 0x0  C:\WINDOWS\SYSTEM32\mfc140u.dll + 0x27b93c
+0057BDA4  CUIEEditBtn::CreateButton + 0x91044  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\ControlExpert.exe + 0xdbda4
+     SymFromAddr error 487:
+7522FCC9  CUIEEditBtn::CreateButton + 0x0  C:\WINDOWS\System32\KERNEL32.DLL + 0x1fcc9
+76F17C3E  RtlGetAppContainerNamedObjectPath + 0xee  C:\WINDOWS\SYSTEM32\ntdll.dll + 0x67c3e
+76F38C2C  RtlCaptureContext + 0xfc  C:\WINDOWS\SYSTEM32\ntdll.dll + 0x88c2c

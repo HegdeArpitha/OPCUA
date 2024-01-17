@@ -1,0 +1,10 @@
+Stack trace:
+7A6DAFC7  _ODI_getrusage + 0x1b7  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0xafc7
+7A6FB8E8  tix_exception::ancestor_of + 0xd8  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSLOW.2013.0.DLL + 0x2b8e8
+77BB8415  bsearch + 0x95  C:\WINDOWS\SYSTEM32\ntdll.dll + 0x78415
+77BB8415  bsearch + 0x95  C:\WINDOWS\SYSTEM32\ntdll.dll + 0x78415
+77B8A73E  RtlFindActivationContextSectionString + 0x57e  C:\WINDOWS\SYSTEM32\ntdll.dll + 0x4a73e
+77B8D8A5  RtlFindActivationContextSectionGuid + 0x1c5  C:\WINDOWS\SYSTEM32\ntdll.dll + 0x4d8a5
+77B9ABB9  RtlRestoreLastWin32Error + 0x39  C:\WINDOWS\SYSTEM32\ntdll.dll + 0x5abb9
+76548DA2  WaitForSingleObject + 0x12  C:\WINDOWS\System32\KERNELBASE.dll + 0x118da2
+7A98A901  os_soft_pointer_base<32>::operator= + 0x1a1  C:\Program Files (x86)\Schneider Electric\Control Expert 16.0\OSCLIENT.2013.0.DLL + 0x7a901
